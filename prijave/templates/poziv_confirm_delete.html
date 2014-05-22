@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block contents %}
+<form action="" method="post">{% csrf_token %}
+    <p>Da li ste sigurni da zelite da obustavite radnu akciju "{{ object.lokacija }}"?</p>
+    <input type="submit" value="Confirm" />
+</form>
+{% endblock contents %}

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Radne akcije{% endblock %}</title>
+
+  <!--<link rel="stylesheet" href="{% static "css/normalize.css" %}">-->
+  <link rel="stylesheet" href="{% static "css/foundation.css" %}">
+  <link rel="stylesheet" href="{% static "foundation-icons.css" %}">
+
+
+  {% block head %}
+  {% endblock head %}
+
+  <script src="{% static "js/vendor/modernizr.js" %}"></script>
+
+</head>
+<body>
+  {% block nav %}
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Volonteri</a></h1>
+       </li>
+       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <li><a href="/nova">Napravi radnu akciju</a></li>
+      </ul>
+    </section>
+  </nav>
+  {% endblock nav %}
+
+  {% block body %}
+  <div class="row">
+    <div class="small-11 small-centered column">
+      {% block contents %}
+      {% endblock contents %}
+    </div>
+  </div>
+  {% endblock body %}
+
+  <script src="{% static "js/vendor/jquery.js" %}"></script>
+  <script src="{% static "js/vendor/fastclick.js" %}"></script>
+  <script src="{% static "js/foundation.min.js" %}"></script>
+  <script src="{% static "js/foundation/foundation.topbar.js" %}"></script>
+  <script>
+    $(document).foundation();
+  </script>
+</body>
+</html>

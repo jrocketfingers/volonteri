@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block body %}
+      {% if pozivi %}
+        <div class="row">
+          <h3 class="small-12 column">Potrebna volonterska pomoc:</h3>
+        </div>
+      {% else %}
+        <div class="row">
+          <div class="small-12 column">
+            <center><h3>Trenutno nema radnih akcija.</h3></center>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-6 small-centered column">
+            <a href="/nova" class="expand button">Pokreni novu!</a>
+          </div>
+        </div>
+      {% endif %}
+  {{ block.super }}
+{% endblock body %}
+
+{% block contents %}
+  {% if pozivi %}
+    {% for poziv in pozivi %}
+      <div class="panel row">
+        <h4> {{ poziv.lokacija }} </h4>
+        <p> {{ poziv.opis|linebreaks }} </p>
+        <div class="progress small-10 column">
+          <span class="meter" style="width: {{ poziv.progress }}%"></span>
+        </div>
+        <p class="small-2 column">{{ poziv.prijavljeno_pomoci }}/{{ poziv.kolicina_pomoci }}</p>
+        <form method="post" action="/dolazim/{{ poziv.id }}">
+          {% csrf_token %}
+          <button type="submit" class="expand"><i class="fi-plus"></i> Dolazim!</button>
+        </form>
+      </div>
+      <hr>
+    {% endfor %}
+  {% endif %}
+{% endblock contents %}

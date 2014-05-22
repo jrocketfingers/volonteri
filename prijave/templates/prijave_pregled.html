@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div class="row">
+  <div class="small-12">
+    <p>Vec ste pokrenuli akciju:</p>
+
+    <div class="panel">
+      <div class="row">
+        <h4 class="small-6 column">{{ poziv.lokacija }}</h4>
+        <form action="/obustavi/{{ poziv.pk }}" method="post">
+          {% csrf_token %}
+          <button href="/obustavi/{{ poziv.pk }}" class="small-5 alert column">Obustavi</button>
+        </form>
+      </div>
+      <p>{{ poziv.opis }}</p>
+    </div>
+
+    <h5>Status Vase inicijative:</h5>
+
+    <div class="progress small-10 column">
+      <span class="meter" style="width: {{ poziv.progress }}%"></span>
+    </div>
+    <p class="small-2 column">{{ poziv.prijavljeno_pomoci }}/{{ poziv.kolicina_pomoci }}</p>
+
+  </div>
+</div>
+{% endblock body %}

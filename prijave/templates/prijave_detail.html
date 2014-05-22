@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+<h3>Prijavili ste se za:</h3>
+<div class="row">
+  <div class="small-8 column">
+    <h5 class="subheader">{{ poziv.lokacija }}</h5>
+  </div>
+  <div class="small-4 column">
+    <form method="post" action="ne-dolazim/{{ poziv.pk }}">
+      {% csrf_token %}
+      <button class="expand alert" type="submit">Ne dolazim</button>
+    </form>
+  </div>
+</div>
+<p>{{ poziv.opis }}</p>
+{% endblock contents %}
+
